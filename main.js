@@ -68,6 +68,11 @@ var problemGenerator = [
 	// there is no level 0
 	() => {
 		debug("generating problem for level 0???");
+		return {
+			problemBefore: "error",
+			problemAfter: "",
+			solution: NaN
+		};
 	},
 
 	// level 1
@@ -231,7 +236,8 @@ var app = new Vue({
 		overlayHidden: false,
 		userAnswer: '',
 		restartButtonHidden: true,
-		levelSelectorHidden: false
+		levelSelectorHidden: false,
+		gameLevel: 0
 	},
 
 	methods: {
@@ -291,7 +297,7 @@ var app = new Vue({
 		
 		initGame: function () {
 			
-			console.log("game start",  GAME_DEFAULTS);
+			debug("game start");
 			gameRunning = true;
 		
 			app.timeLeft =  GAME_DEFAULTS.maxTime;
@@ -300,7 +306,7 @@ var app = new Vue({
 		
 			setTimeout(endGame,  GAME_DEFAULTS.maxTime * 1000);
 			gameLoopInterval = setInterval(gameLoop, 1000);
-		
+			
 			newEquation(app.gameLevel);
 			app.$refs.solution.focus();
 			
