@@ -237,7 +237,7 @@ var app = new Vue({
 		userAnswer: '',
 		restartButtonHidden: true,
 		levelSelectorHidden: false,
-		gameLevel: 0
+		gameLevel: 1
 	},
 
 	methods: {
