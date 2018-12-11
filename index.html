@@ -1,0 +1,51 @@
+<html lang="en">
+	
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>LibreMath</title>
+		<link rel="stylesheet" href="main.css">
+		
+	</head>
+	
+	<body>
+
+		<div id="app">
+
+			<div id="question">
+				<span>{{ equationBefore }}</span>
+				<input id="solution" ref="solution" type="text" v-model="userAnswer" v-on:keydown.enter="handleSubmit(userAnswer)">
+				<span>{{ equationAfter }}</span>
+			</div>
+
+			<hr>
+			<div id="progress">
+				your score: <span>{{ yourScore }}</span>
+				<br> incorrect (max 3): <span>{{ incorrect }}</span>
+				<br> time left (secs): <span>{{ timeLeft }}</span>
+				<br> level: <span>{{ gameLevel }}</span>
+			</div>
+
+			<div id="overlay" v-bind:class="{ hidden: overlayHidden }">
+				{{ overlayText }}
+				<br><br>
+				<button ref="restartButton" v-on:click="restartGame()" v-bind:class="{ hidden: restartButtonHidden }">
+					restart
+				</button>
+				<select v-model="gameLevel" v-bind:class="{ hidden: levelSelectorHidden }">
+					<option value="1">level 1</option>
+					<option value="2">level 2</option>
+					<option value="3">level 3</option>
+				</select>
+
+				<button v-on:click="initCountdown(3, initGame)" v-bind:class="{ hidden: levelSelectorHidden }">
+					start game
+				</button>
+			</div>
+
+		</div>
+
+	</body>
+	
+</html>
