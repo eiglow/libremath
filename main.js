@@ -265,7 +265,7 @@ var app = new Vue({
 				}
 			}
 
-			newEquation( GAME_DEFAULTS.level);
+			newEquation(app.gameLevel);
 
 		},
 
