@@ -305,7 +305,7 @@ var app = new Vue({
 			app.yourScore = 0;
 			app.incorrect = 0;
 		
-			setTimeout(endGame,  GAME_DEFAULTS.maxTime * 1000);
+			gameTimeout = setTimeout(endGame,  GAME_DEFAULTS.maxTime * 1000);
 			gameLoopInterval = setInterval(gameLoop, 1000);
 			
 			newEquation(app.gameLevel);
@@ -318,9 +318,7 @@ var app = new Vue({
 });
 
 // yeah i know globals are bad and all, shut up
-var gameRunning,
-	currentSolution,
-	gameLoopInterval;
+var gameRunning, currentSolution, gameLoopInterval, gameTimeout;
 
 function gameLoop() {
 	app.timeLeft--;
@@ -329,6 +327,7 @@ function gameLoop() {
 function endGame() {
 	gameRunning = false;
 	clearInterval(gameLoopInterval);
+	clearTimeout(gameTimeout);
 
 	app.overlayHidden = false;
 	app.overlayText = TEXT[LANG].endgame;
