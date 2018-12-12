@@ -227,6 +227,7 @@ var app = new Vue({
 	el: '#app',
 
 	data: {
+		pageNotLoaded: true,
 		equationBefore: '',
 		equationAfter: '',
 		yourScore: '',
@@ -357,6 +358,7 @@ function init() {
 	app.levelSelectorHidden = false;
 	app.restartButtonHidden = true;
 	app.overlayText = "choose a level:";
+	app.pageNotLoaded = false;
 
 }
 
