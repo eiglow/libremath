@@ -14,7 +14,7 @@
 	
 	<body>
 
-		<div id="app" class="hidden">
+		<div id="app" v-bind:class="{ hidden: pageNotLoaded }">
 
 			<div id="question">
 				<span>{{ equationBefore }}</span>
